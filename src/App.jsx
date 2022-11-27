@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+// router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// pages
+import HomePage from "./pages/HomePage";
+import WomenPage from "./pages/WomenPage";
+import MenPage from "./pages/MenPage";
+import ShopAllPage from "./pages/ShopAllPage";
+import AboutUsPage from "./pages/AboutUsPage";
+import ContactPage from "./pages/ContactPage";
+import ClothPage from "./pages/ClothPage";
+
+// widgets
+import NavbarWidget from "./widgets/NavbarWidget";
+import FooterWidget from "./widgets/FooterWidget";
+
+const App = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <NavbarWidget />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/women" element={<WomenPage />} />
+        <Route path="/men" element={<MenPage />} />
+        <Route path="/shop_all" element={<ShopAllPage />} />
+        <Route path="/about_us" element={<AboutUsPage />} />
+        <Route path="/contact_us" element={<ContactPage />} />
+        <Route path="/cloth" element={<ClothPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+      <FooterWidget />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
